@@ -7,13 +7,17 @@
 
         subOneQuarter: function (tab)
         {
-
+            tab = tab.map(function (element)
+            {
+                return element - (element / 2);
+            });
+            return tab;
         },
 
         //(7) Napisz funkcjê, która zwraca litery w alfabetycznej kolejnoœci
         alphabetOrder: function (str)
         {
-
+            return str.split('').sort().join();
         }
     };
 })();
