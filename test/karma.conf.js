@@ -1,5 +1,6 @@
 /*global module*/
-module.exports = function (config) {
+module.exports = function (config)
+{
     'use strict';
 
     config.set({
@@ -14,7 +15,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'app/**/*.js',
+            'app/*.js',
             'test/spec/**/*.js'
         ],
 
