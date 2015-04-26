@@ -11,60 +11,94 @@
         this.container = [];
     }
 
-    // Stwórz prototyp dla obiektów Box
+    //Stwórz prototyp dla obiektów Box
     Box.prototype = {
 
-        // (1) Napisz funkcje ustawiajacą width
+        //Napisz funkcje ustawiajacą width
         setWidth: function (width)
         {
+            this.width = width;
         },
-        // (2) Napisz funckje ustawiajaca height
+        //Napisz funckje ustawiajaca height
         setHeight: function (height)
         {
+            this.height = height;
         },
-        // (3) Napisz funkcje ustawiajaca length
+        //Napisz funkcje ustawiajaca length
         setLength: function (length)
         {
+            this.lenght = length;
         },
-        // (4) Napisz funkcje pozwalajaca dodac zawartosc do box'a
+        //Napisz funkcje pozwalajaca dodac zawartosc do box'a
         addContent: function (conntentToAdd)
         {
+            this.container.push(conntentToAdd);
         },
-        // (5) Napisz funkcje zwracajaca zawartość box'a
+        //Napisz funkcje zwracajaca zawartość box'a
         getContent: function ()
         {
-
+            if (0 < this.container.length) {
+                return this.container;
+            } else {
+                return false;
+            }
         },
-        // (6) Napisz funkcje valueOf zwracającą objetosc box'a
+        //Napisz funkcje valueOf aby zwracala objetosc box'a
         valueOf: function ()
         {
-
+            if ('number' === typeof this.width && 'number' === typeof this.height && 'number' === typeof this.length) {
+                return this.width * this.height * this.length;
+            } else {
+                return false;
+            }
         },
-        // (7) Napisz funkcje toString zwracającą string:
+        //Napisz funkcje toString aby zwracala string:
         //Box #id Volume:volume
         //Contain:
         //listOfContent
         //Każdy element z listy w nowej lini
         toString: function ()
         {
+            var listOfContent = '';
+            if (0 !== this.container.length) {
+                for (var i = 0; this.container.length > i; i++) {
 
+                    if (this.container.length - 1 !== i) {
+                        listOfContent = listOfContent + this.container[i] + '\n';
+                    } else {
+                        listOfContent = listOfContent + this.container[i];
+                    }
+                }
+            } else {
+                listOfContent += 'nothing';
+            }
+
+            return 'Box #' + this.id + ' Volume:' + this.valueOf() + '\nContain:\n' + listOfContent;
         },
 
-        // (8) Napisz funkcje opróżniającą box
+        //Napisz funkcje opróżniającą box
         empty: function ()
         {
+            this.container = [];
         },
 
-        // (9) Napisz funkcje wyszukujaca element w zawartosci box'a
+        //Napisz funkcje wyszukujaca element w zawartosci box'a
         searchInContent: function (name)
         {
-
+            for (var i = 0; this.container.length > i; i++) {
+                if (name === this.container[i]) {
+                    return this.container[i];
+                }
+            }
+            return false;
         },
 
-        // (10) Napisz funckej dodającą zawartość z innego box'a
+        //Napisz funckej dodającą zawartość z innego box'a
         appendContent: function (boxToCopy)
         {
-
+            for (var i = 0; boxToCopy.container.length > i; i++) {
+                this.container.push(boxToCopy.container[i]);
+            }
         }
 
     };
